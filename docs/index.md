@@ -1,3 +1,11 @@
+<h2 id="setup-dw">Creating a data.world account</h2>
+
+1.  Navigate to https://data.world/
+
+1.  Click `Join` in the upper right-hand corner
+
+1.  Fill in the form and verify your email address
+
 <h2 id="setup-r">Setting up R Studio</h2>
 
 1.  First, you need to make sure you have R installed:
