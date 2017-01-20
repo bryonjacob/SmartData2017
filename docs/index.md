@@ -38,7 +38,7 @@ We will be working from <a href="https://github.com/bryonjacob/SmartData2017/raw
 <h3>Transactions by SKU</h3>
 
 ```
-PREFIX t: <http://data.world/bryon/SmartData2017/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
+PREFIX t: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
 
 SELECT DISTINCT ?txid ?date ?price ?sku WHERE {
 
@@ -51,8 +51,8 @@ ORDER BY ?date
 <h3>Transactions by UNSPSC</h3>
 
 ```
-PREFIX t: <http://data.world/bryon/SmartData2017/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
-PREFIX p: <http://data.world/bryon/SmartData2017/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
+PREFIX t: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
+PREFIX p: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
 
 SELECT DISTINCT ?txid ?date ?price ?unspsc WHERE {
 
