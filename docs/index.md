@@ -25,3 +25,16 @@
 <h2 id="download-data">Download the data file</h2>
 
 We will be working from <a href="https://github.com/bryonjacob/SmartData2017/raw/master/docs/CatanSettlementBuilders-2016-H2.xlsx">this spreadsheet</a>
+
+<h2 id="queries">Queries</h2>
+
+```
+PREFIX t: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
+
+SELECT DISTINCT ?txid ?date ?price ?sku WHERE {
+
+    [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ] .
+
+}
+ORDER BY ?date
+```
