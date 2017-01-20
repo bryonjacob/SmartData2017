@@ -27,6 +27,7 @@
 We will be working from <a href="https://github.com/bryonjacob/SmartData2017/raw/master/docs/CatanSettlementBuilders-2016-H2.xlsx">this spreadsheet</a>
 
 <h2 id="queries">Queries</h2>
+<h3>Transactions by SKU</h3>
 
 ```
 PREFIX t: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
