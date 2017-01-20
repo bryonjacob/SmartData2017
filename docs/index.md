@@ -40,3 +40,18 @@ SELECT DISTINCT ?txid ?date ?price ?sku WHERE {
 }
 ORDER BY ?date
 ```
+<h3>Transactions by UNSPSC</h3>
+
+```
+PREFIX t: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
+PREFIX p: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
+
+SELECT DISTINCT ?txid ?date ?price ?unspsc WHERE {
+
+# Picks out the transaction id, date, price from the transaction table
+# Join the sku with the SKU table, and look up the UNSPSC code for that product
+    [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku/^p:sku/p:unspsc_raw ?unspsc ] .
+
+}
+ORDER BY ?date
+```
