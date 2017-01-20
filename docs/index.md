@@ -34,6 +34,7 @@ PREFIX t: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettleme
 
 SELECT DISTINCT ?txid ?date ?price ?sku WHERE {
 
+# Picks out the transaction id, date, price and sku from the transaction table
     [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ] .
 
 }
