@@ -24,4 +24,4 @@
 
 <h2 id="download-data">Download the data file</h2>
 
-We will be working from <a href="https://github.com/bryonjacob/SmartData2017/raw/master/docs/CatanSettlementBuilders-2016-H2.xslx">this spreadsheet</a>
+We will be working from <a href="https://github.com/bryonjacob/SmartData2017/raw/master/docs/CatanSettlementBuilders-2016-H2.xlsx">this spreadsheet</a>
