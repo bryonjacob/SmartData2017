@@ -66,8 +66,8 @@ ORDER BY ?date
 
 <h3>Transactions by Class</h3>
 ```
-PREFIX p: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
-PREFIX t: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
+PREFIX p: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
+PREFIX t: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
 PREFIX unspsc: <http://workingontologist.org/vocabularies/unspsc#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
@@ -88,9 +88,9 @@ ORDER BY ?date
 ```
 <h3>Transactions by Business SubSector</h3>
 ```
-PREFIX c: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/COMPANIES#>
-PREFIX p: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
-PREFIX t: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
+PREFIX c: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/COMPANIES#>
+PREFIX p: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
+PREFIX t: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
 PREFIX naics: <http://workingontologist.org/vocabularies/naics/2012#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
