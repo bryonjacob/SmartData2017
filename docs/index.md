@@ -94,7 +94,7 @@ PREFIX t: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H
 PREFIX naics: <http://workingontologist.org/vocabularies/naics/2012#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-SELECT DISTINCT ?txid ?date ?price ?sku ?unspsc ?product_category ?supplier ?purchaser ?supplier_category ?purchaser_category WHERE {
+SELECT DISTINCT ?txid ?date ?price ?sku ?supplier ?purchaser ?supplier_category ?purchaser_category WHERE {
     [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ;
       t:purchaser ?purchaser ; t:supplier ?supplier ;
       # Find NAICS codes for the supplier and purchaser
