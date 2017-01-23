@@ -28,6 +28,7 @@
 
     ```
     install.packages("ggplot2")
+    require ("ggplot2")
     ```
 
 <h2 id="download-data">Download the data file</h2>
