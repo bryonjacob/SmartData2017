@@ -150,7 +150,7 @@ ORDER BY ?date
 ```
 <h3>R code</h3>
 ```
-ggplot (df, aes(x=as, Date(date), y=price, fill=product_class)) +
+ggplot (df, aes(x=as.Date(date), y=price, fill=product_class)) +
 geom_bar(stat="identity") +
 facet_grid (product_class ~ .)
 ```
