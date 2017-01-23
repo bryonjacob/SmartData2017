@@ -63,3 +63,22 @@ SELECT DISTINCT ?txid ?date ?price ?unspsc WHERE {
 }
 ORDER BY ?date
 ```
+
+<h3>Transactions by Class</h3>
+```
+PREFIX p: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
+PREFIX t: <http://data.world/bryon/catan-settlement-builders-h-216/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
+PREFIX unspsc: <http://workingontologist.org/vocabularies/unspsc#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?txid ?date ?price ?class   WHERE {
+
+    [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku/^p:sku/p:unspsc_raw ?unspsc ] .
+
+    SERVICE <https://query.data.world/sparql/dallemang/unspsc-codes-in-utf-8> {
+        ?unspsc ^skos:notation/skos:broader* ?cat . ?cat skos:prefLabel ?class .
+        ?cat a unspsc:Class 
+    } 
+}
+ORDER BY ?date
+```
