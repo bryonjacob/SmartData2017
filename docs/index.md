@@ -73,8 +73,12 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 SELECT DISTINCT ?txid ?date ?price ?class   WHERE {
 
+# Picks out the transaction id, date, price from the transaction table
+# Join the sku with the SKU table, and look up the UNSPSC code for that product
     [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku/^p:sku/p:unspsc_raw ?unspsc ] .
 
+# Looks up that UNSPSC code in the UNSPSC table, and finds all broader codes.  Filter to find the one that is 
+# a "Class" in the UNSPSC hierarchy.  Get its label (call it ?class)
     SERVICE <https://query.data.world/sparql/dallemang/unspsc-codes-in-utf-8> {
         ?unspsc ^skos:notation/skos:broader* ?cat . ?cat skos:prefLabel ?class .
         ?cat a unspsc:Class 
