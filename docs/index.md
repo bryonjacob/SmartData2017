@@ -8,7 +8,7 @@
 
 <h2 id="setup-dataset">Create a dataset for the tutorial</h2>
 
-1. Under your name on the right-hand side of the page, see `Your Dataets`.  Click the  `+` sign to create a new one. 
+1. Under your name on the right-hand side of the page, see `Your Datasets`.  Click the  `+` sign to create a new one. 
 
 1. Call the dataset SmartData2017  (no spaces; give it this exact name to make the rest of the tutorial go smoothly)
 
