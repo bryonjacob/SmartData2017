@@ -44,7 +44,7 @@ PREFIX t: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H
 SELECT DISTINCT ?txid ?date ?price ?sku WHERE {
 
 # Picks out the transaction id, date, price and sku from the transaction table
-    [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ] .
+    ?record  t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku .
 
 }
 ORDER BY ?date
