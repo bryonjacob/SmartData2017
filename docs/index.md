@@ -59,7 +59,7 @@ SELECT DISTINCT ?txid ?date ?price ?unspsc WHERE {
 
 # Picks out the transaction id, date, price from the transaction table
 # Join the sku with the SKU table, and look up the UNSPSC code for that product
-    [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku/^p:sku/p:unspsc_raw ?unspsc ] .
+    ?record  t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku/^p:sku/p:unspsc_raw ?unspsc .
 
 }
 ORDER BY ?date
@@ -76,7 +76,7 @@ SELECT DISTINCT ?txid ?date ?price ?class   WHERE {
 
 # Picks out the transaction id, date, price from the transaction table
 # Join the sku with the SKU table, and look up the UNSPSC code for that product
-    [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku/^p:sku/p:unspsc_raw ?unspsc ] .
+    ?record t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku/^p:sku/p:unspsc_raw ?unspsc .
 
 # Looks up that UNSPSC code in the UNSPSC table, and finds all broader codes.  Filter to find the one that is 
 # a "Class" in the UNSPSC hierarchy.  Get its label (call it ?class)
@@ -96,11 +96,11 @@ PREFIX naics: <http://workingontologist.org/vocabularies/naics/2012#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 SELECT DISTINCT ?txid ?date ?price ?sku ?supplier ?purchaser ?supplier_category ?purchaser_category WHERE {
-    [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ;
-      t:purchaser ?purchaser ; t:supplier ?supplier ;
-      # Find NAICS codes for the supplier and purchaser
-      t:purchaser/^c:company/c:naics_raw ?purchaser_naics ; 
-      t:supplier/^c:company/c:naics_raw ?supplier_naics ] .
+   ?record t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ;
+           t:purchaser ?purchaser ; t:supplier ?supplier ;
+           # Find NAICS codes for the supplier and purchaser
+           t:purchaser/^c:company/c:naics_raw ?purchaser_naics ; 
+           t:supplier/^c:company/c:naics_raw ?supplier_naics .
 
  # Look up the SubSector for those NAICS codes
     SERVICE <https://query.data.world/sparql/dallemang/naics-codes-2012> {
@@ -122,14 +122,14 @@ PREFIX unspsc: <http://workingontologist.org/vocabularies/unspsc#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 SELECT DISTINCT ?txid ?date ?price ?sku ?supplier ?purchaser ?supplier_category ?purchaser_category WHERE {
-    [ t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ;
-      t:purchaser ?purchaser ; t:supplier ?supplier ;
-      # Find UNSPSC code for the product
-      t:sku/^p:sku/p:unspsc_raw ?unspsc ;
+  ?record t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ;
+          t:purchaser ?purchaser ; t:supplier ?supplier ;
+          # Find UNSPSC code for the product
+          t:sku/^p:sku/p:unspsc_raw ?unspsc ;
 
-      # Find NAICS codes for the supplier and purchaser
-      t:purchaser/^c:company/c:naics_raw ?purchaser_naics ; 
-      t:supplier/^c:company/c:naics_raw ?supplier_naics ] .
+          # Find NAICS codes for the supplier and purchaser
+          t:purchaser/^c:company/c:naics_raw ?purchaser_naics ; 
+          t:supplier/^c:company/c:naics_raw ?supplier_naics  .
 
     # Look up that UNSPSC code in the UNSPSC table, and finds all broader codes.  Filter to find the one that is 
     # a "Class" in the UNSPSC hierarchy.  Get its label (call it ?class)
