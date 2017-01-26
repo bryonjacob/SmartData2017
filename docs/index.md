@@ -87,7 +87,7 @@ SELECT DISTINCT ?txid ?date ?price ?class   WHERE {
 }
 ORDER BY ?date
 ```
-<h3>Transactions by Business SubSector</h3>
+<h3>Transactions by Business Sector</h3>
 ```
 PREFIX c: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/COMPANIES#>
 PREFIX p: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
@@ -102,12 +102,12 @@ SELECT DISTINCT ?txid ?date ?price ?sku ?supplier ?purchaser ?supplier_category 
            t:purchaser/^c:company/c:naics_raw ?purchaser_naics ; 
            t:supplier/^c:company/c:naics_raw ?supplier_naics .
 
- # Look up the SubSector for those NAICS codes
+ # Look up the Sector for those NAICS codes
     SERVICE <https://query.data.world/sparql/dallemang/naics-codes-2012> {
         ?supplier_naics ^skos:notation/skos:broader* ?scat . ?scat skos:prefLabel ?supplier_category .
-        ?scat a naics:SubSector .
+        ?scat a naics:Sector .
         ?purchaser_naics ^skos:notation/skos:broader* ?pcat. ?pcat skos:prefLabel ?purchaser_category .
-        ?pcat a naics:SubSector
+        ?pcat a naics:Sector
     } 
 }
 ORDER BY ?date
@@ -138,12 +138,12 @@ SELECT DISTINCT ?txid ?date ?price ?sku ?supplier ?purchaser ?supplier_category 
         ?cat a unspsc:Class 
     } 
 
-    # Look up the SubSector for those NAICS codes
+    # Look up the Sector for those NAICS codes
     SERVICE <https://query.data.world/sparql/dallemang/naics-codes-2012> {
         ?supplier_naics ^skos:notation/skos:broader* ?scat . ?scat skos:prefLabel ?supplier_category .
-        ?scat a naics:SubSector .
+        ?scat a naics:Sector .
         ?purchaser_naics ^skos:notation/skos:broader* ?pcat. ?pcat skos:prefLabel ?purchaser_category .
-        ?pcat a naics:SubSector
+        ?pcat a naics:Sector
     } 
 }
 ORDER BY ?date
