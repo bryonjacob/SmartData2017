@@ -162,7 +162,8 @@ ORDER BY ?date
 ```
 ```
 > ggplot (df[df$purchaser_category == "Construction" & df$product_class == "Livestock",], aes(x=date, y=price, fill=product_class)) +
-     geom_point(stat="identity")
+     geom_point(stat="identity") +
+     facet_grid (supplier ~ purchaser)
 ```
 
 
