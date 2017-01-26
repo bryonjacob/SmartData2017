@@ -150,7 +150,19 @@ ORDER BY ?date
 ```
 <h3>R code</h3>
 ```
-ggplot (df, aes(x=as.Date(date), y=price, fill=product_class)) +
-geom_bar(stat="identity") +
-facet_grid (product_class ~ .)
+> ggplot (df, aes(x=as.Date(date), y=price, fill=product_class)) +
+     geom_bar(stat="identity") +
+     facet_grid (supplier_category ~ purchaser_category)
 ```
+```
+> ggplot (df, aes(x=product_class, y=price)) +
+     geom_boxplot() +
+     geom_jitter(position = position_jitter(0.2)) +
+     facet_grid (supplier_category ~ purchaser_category)
+```
+```
+> ggplot (df[df$purchaser_category == "Construction" & df$product_class == "Livestock",], aes(x=date, y=price, fill=product_class)) +
+     geom_point(stat="identity")
+```
+
+
