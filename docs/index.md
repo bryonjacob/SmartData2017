@@ -64,6 +64,10 @@ SELECT DISTINCT ?txid ?date ?price ?unspsc WHERE {
 }
 ORDER BY ?date
 ```
+<h3>Transactions by UNSPSC</h3>
+```
+
+```
 
 <h3>Transactions by Class</h3>
 ```
