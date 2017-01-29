@@ -1,6 +1,6 @@
 <h2 id="setup-dw">Creating a data.world account</h2>
 
-1.  Navigate to https://data.world/
+1.  Navigate to <a href="https://data.world/">https://data.world/</a>
 
 1.  Click `Join` in the upper right-hand corner
 
