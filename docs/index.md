@@ -64,9 +64,26 @@ SELECT DISTINCT ?txid ?date ?price ?unspsc WHERE {
 }
 ORDER BY ?date
 ```
-<h3>Transactions by UNSPSC</h3>
+<h3>UNSPSC Structure</h3>
 ```
+PREFIX p: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
+PREFIX t: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/TRANSACTIONS#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX unspsc: <http://workingontologist.org/vocabularies/unspsc#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
+SELECT  ?code ?desc ?type ?parent ?pdesc ?ptype
+WHERE {
+  SERVICE <https://query.data.world/sparql/dallemang/unspsc-codes-in-utf-8> {
+       ?record  skos:notation ?code . 
+       ?record skos:prefLabel ?desc . 
+       ?record a / rdfs:label ?type .
+       ?record skos:broader ?precord . 
+       ?precord skos:notation ?parent . 
+       ?precord skos:prefLabel  ?pdesc . 
+       ?precord a / rdfs:label ?ptype . 
+    }
+} LIMIT 100
 ```
 
 <h3>Transactions by Class</h3>
