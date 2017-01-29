@@ -81,8 +81,8 @@ SELECT DISTINCT ?txid ?date ?price ?class   WHERE {
 # Looks up that UNSPSC code in the UNSPSC table, and finds all broader codes.  Filter to find the one that is 
 # a "Class" in the UNSPSC hierarchy.  Get its label (call it ?class)
     SERVICE <https://query.data.world/sparql/dallemang/unspsc-codes-in-utf-8> {
-        ?unspsc ^skos:notation/skos:broader* ?cat . ?cat skos:prefLabel ?class .
-        ?cat a unspsc:Class 
+        ?unspsc ^skos:notation/skos:broader* ?cat . 
+        ?cat a unspsc:Class ; skos:prefLabel ?class .
     } 
 }
 ORDER BY ?date
@@ -104,15 +104,15 @@ SELECT DISTINCT ?txid ?date ?price ?sku ?supplier ?purchaser ?supplier_category 
 
  # Look up the Sector for those NAICS codes
     SERVICE <https://query.data.world/sparql/dallemang/naics-codes-2012> {
-        ?supplier_naics ^skos:notation/skos:broader* ?scat . ?scat skos:prefLabel ?supplier_category .
-        ?scat a naics:Sector .
-        ?purchaser_naics ^skos:notation/skos:broader* ?pcat. ?pcat skos:prefLabel ?purchaser_category .
-        ?pcat a naics:Sector
+        ?supplier_naics ^skos:notation/skos:broader* ?scat . 
+        ?scat a naics:Sector ; skos:prefLabel ?supplier_category .
+        ?purchaser_naics ^skos:notation/skos:broader* ?pcat. 
+        ?pcat a naics:Sector ; skos:prefLabel ?purchaser_category .
     } 
 }
 ORDER BY ?date
 ```
-<h3>Transactions by Product and Business Categories</h3>
+<h3>Transactions by Product and Business Sector</h3>
 ```
 PREFIX c: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/COMPANIES#>
 PREFIX p: <http://data.world/bryon/smartdata-2017/CatanSettlementBuilders-2016-H2.xlsx/PRODUCTS#>
@@ -121,7 +121,7 @@ PREFIX naics: <http://workingontologist.org/vocabularies/naics/2012#>
 PREFIX unspsc: <http://workingontologist.org/vocabularies/unspsc#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-SELECT DISTINCT ?txid ?date ?price ?sku ?supplier ?purchaser ?supplier_category ?purchaser_category WHERE {
+SELECT DISTINCT ?txid ?date ?price ?sku ?product_class ?supplier ?purchaser ?supplier_category ?purchaser_category WHERE {
   ?record t:txid ?txid ; t:date ?date ; t:price ?price ; t:sku ?sku ;
           t:purchaser ?purchaser ; t:supplier ?supplier ;
           # Find UNSPSC code for the product
@@ -134,16 +134,16 @@ SELECT DISTINCT ?txid ?date ?price ?sku ?supplier ?purchaser ?supplier_category 
     # Look up that UNSPSC code in the UNSPSC table, and finds all broader codes.  Filter to find the one that is 
     # a "Class" in the UNSPSC hierarchy.  Get its label (call it ?class)
     SERVICE <https://query.data.world/sparql/dallemang/unspsc-codes-in-utf-8> {
-        ?unspsc ^skos:notation/skos:broader* ?cat . ?cat skos:prefLabel ?product_class .
-        ?cat a unspsc:Class 
+        ?unspsc ^skos:notation/skos:broader* ?cat . 
+        ?cat a unspsc:Class ; skos:prefLabel ?product_class .
     } 
 
     # Look up the Sector for those NAICS codes
     SERVICE <https://query.data.world/sparql/dallemang/naics-codes-2012> {
-        ?supplier_naics ^skos:notation/skos:broader* ?scat . ?scat skos:prefLabel ?supplier_category .
-        ?scat a naics:Sector .
-        ?purchaser_naics ^skos:notation/skos:broader* ?pcat. ?pcat skos:prefLabel ?purchaser_category .
-        ?pcat a naics:Sector
+        ?supplier_naics ^skos:notation/skos:broader* ?scat . 
+        ?scat a naics:Sector ; skos:prefLabel ?supplier_category .
+        ?purchaser_naics ^skos:notation/skos:broader* ?pcat. 
+        ?pcat a naics:Sector ; skos:prefLabel ?purchaser_category .
     } 
 }
 ORDER BY ?date
