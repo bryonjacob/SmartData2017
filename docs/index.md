@@ -22,7 +22,7 @@
 
 1.  Next, you can download and run the RStudio installer for your platform
     
-    [https://www.rstudio.com/products/rstudio/download/](https://cran.rstudio.com/)
+    [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
    
 1.  Once you have R and R Studio installed, we need to install the R package dependencies that this project depends upon - there is only one package we need to install, the `ggplot2` package.  From within R Studio, you can install it from the `Console` tab by typing:
 
